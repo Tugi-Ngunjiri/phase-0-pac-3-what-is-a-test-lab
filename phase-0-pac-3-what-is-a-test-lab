@@ -1,0 +1,92 @@
+> js-functions-lab@0.1.0 test /Users/mbenton/Desktop/curriculum-team/js-what-is-a-test-lab
+> mocha -R mocha-multi --reporter-options spec=-,json=.results.json
+
+  what-is-a-test
+    Name
+      1) returns "Susan"
+    Height
+      2) is less than 40
+    Message
+      ✓ gives the name and height
+
+
+  1 passing (552ms)
+  2 failing
+
+  1) what-is-a-test
+       Name
+         returns "Susan":
+
+      Error: Expected 'Joe' to equal 'Susan'
+      + expected - actual
+
+      -Joe
+      +Susan
+
+      at assert (node_modules/expect/lib/assert.js:29:9)
+      at Expectation.toEqual (node_modules/expect/lib/Expectation.js:81:30)
+      at Context.<anonymous> (test/index-test.js:6:26)
+      at processImmediate (internal/timers.js:461:21)
+
+  2) what-is-a-test
+       Height
+         is less than 40:
+     Error: Expected 74 to be less than 40
+      at assert (node_modules/expect/lib/assert.js:29:9)
+      at Expectation.toBeLessThan (node_modules/expect/lib/Expectation.js:156:28)
+      at Context.<anonymous> (test/index-test.js:13:28)
+      at processImmediate (internal/timers.js:461:21)
+
+npm ERR! Test failed.  See above for more details.
+Let's break this down a bit. If you look about a third of the way down in the output, you'll see a summary of how the tests went:
+
+  1 passing (552ms)
+  2 failing
+Great! We've already got one test passing! Now let's see how we failed the other two tests.
+
+  1) what-is-a-test
+       Name
+         returns "Susan":
+
+      Error: Expected 'Joe' to equal 'Susan'
+      + expected - actual
+
+      -Joe
+      +Susan
+
+      at assert (node_modules/expect/lib/assert.js:29:9)
+      at Expectation.toEqual (node_modules/expect/lib/Expectation.js:81:30)
+      at Context.<anonymous> (test/index-test.js:6:26)
+      at processImmediate (internal/timers.js:461:21)
+
+  2) what-is-a-test
+       Height
+         is less than 40:
+     Error: Expected 74 to be less than 40
+      at assert (node_modules/expect/lib/assert.js:29:9)
+      at Expectation.toBeLessThan (node_modules/expect/lib/Expectation.js:156:28)
+      at Context.<anonymous> (test/index-test.js:13:28)
+      at processImmediate (internal/timers.js:461:21)
+While there is no hard and fast rule, and there will be exceptions, it is most often best to address your test errors in order. So let's take a look at our first error:
+
+1) what-is-a-test
+       Name
+         returns "Susan":
+
+      Error: Expected 'Joe' to equal 'Susan'
+      + expected - actual
+
+      -Joe
+      +Susan
+
+      at assert (node_modules/expect/lib/assert.js:29:9)
+      at Expectation.toEqual (node_modules/expect/lib/Expectation.js:81:30)
+      at Context.<anonymous> (test/index-test.js:6:26)
+      at processImmediate (internal/timers.js:456:21)
+Here is the specific error:
+
+      Error: Expected 'Joe' to equal 'Susan'
+      + expected - actual
+
+      -Joe
+      +Susan
